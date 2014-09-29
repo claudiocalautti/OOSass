@@ -1,0 +1,32 @@
+// GLOBAL FUNCTIONS
+
+
+// Typography functions
+@function rem($desidered-px, $base-font-size: 16px) {
+	@return round(($desidered-px / $base-font-size) * 1rem);
+}
+
+@function em($desidered-px, $base-font-size: 16px) {
+	@return ($desidered-px / $base-font-size) * 1em;
+}
+
+@function lh($desidered-px, $font-size-px) {
+	@return $desidered-px / $font-size-px;
+}
+
+
+// Invert map array order http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/
+@function reverse($list, $recursive: false) {
+	$result: ();
+
+	@for $i from length($list)*-1 through -1 {
+		@if type-of(nth($list, abs($i))) == list and $recursive {
+			// recursive true for nested list
+			$result: append($result, reverse(nth($list, abs($i)), $recursive));
+		} @else {
+			$result: append($result, nth($list, abs($i)));
+		}
+	}
+
+	@return $result;
+}

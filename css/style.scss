@@ -1,4 +1,5 @@
 /*
+
 	Sass Project Structure | http://thesassway.com/beginner/how-to-structure-a-sass-project
 
 	The MODULES directory is reserved for Sass code that doesn't cause Sass to actually output CSS.
@@ -12,27 +13,25 @@
 
 	css/
 	|
-	|-- modules/              # Common modules
-	|   |-- _all.scss         # Include to get all modules
-	|   |-- _utility.scss     # Module name
-	|   |-- _colors.scss      # Etc...
+	|-- modules/              # Modules
+	|   |-- _variables.scss   # Global Variables
+	|   |-- _functions.scss   # Global Functions
+	|   |-- _utility.scss     # Common mixins
+	|   |-- _responsive.scss  # Settings and mixin for responsive
 	|   ...
 	|
 	|-- partials/             # Partials
-	|   |-- _base.sass        # imports for all mixins + global project variables
-	|   |-- _buttons.scss     # buttons
-	|   |-- _figures.scss     # figures
-	|   |-- _grids.scss       # grids
-	|   |-- _typography.scss  # typography
-	|   |-- _reset.scss       # reset
+	|   |-- _typography.scss  # Tipography settings and declarations
+	|   |-- _elements.scss    # Set of commons elements
+	|   |-- _layout.scss      # Global parts of the layout
 	|   ...
 	|
-	|-- vendor/               # CSS or Sass from other projects
-	|   |-- _colorpicker.scss
-	|   |-- _jquery.ui.core.scss
+	|-- views/                # Views
+	|   |-- _home.scss        # page/view specific stylesheet
 	|   ...
 	|
 	`-- style.scss            # primary Sass file
+
 */
 
 
@@ -42,44 +41,29 @@
 
 @import 'compass';
 
-
 /*==========
  * MODULES *
 ===========*/
 
-// variables
-$white: white;
-$black: black;
+@import 'modules/_variables.scss';
+@import 'modules/_functions.scss';
+@import 'modules/_utility.scss';
+@import 'modules/_responsive.scss';
 
-// default
-@import 'modules/default.scss';
-
-@include normalize;
-@include disable-user-select;
+@include normalize-all;
+@include manage-user-selection;
 @include selection($white, $black);
-
 
 /*===========
  * PARTIALS *
 ============*/
 
-// typograpy
-@import 'partials/typography.scss';
+@import 'partials/_typography.scss';
+@import 'partials/_elements.scss';
+@import 'partials/_layout.scss';
 
+/*===========
+ * PARTIALS *
+============*/
 
-/*=============
- * MAIN STYLE *
-==============*/
-
-html,
-body {
-	width: 100%;
-	height: 100%;
-}
-
-// skin
-// grids sizes & positioning
-// elements
-// commons, pages, section
-// mediaqueries
-
+@import 'views/_home.scss';

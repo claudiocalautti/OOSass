@@ -1,0 +1,75 @@
+// RESPONSIVE
+
+
+// Settings
+$mobile-first: 'min-width';
+$desktop-first: 'max-width';
+
+$named-breakpoints: (
+	'iphone': em(320px),
+	'phones': em(480px),
+	'tablets': em(768px),
+	'desktops': em(992px),
+	'wide-screen': em(1200px)
+);
+
+@mixin responsive($approach: null, $breakpoint: null, $properties: null) {
+
+	// Set approach type
+	@if $approach == '>' {
+		$approach: $mobile-first;
+	} @else if $approach == '<' {
+		$approach: $desktop-first;
+	}
+
+	// Get breakpoint value from breakpoints array
+	@if type-of($breakpoint) == string {
+		// Check if breakpoint name exist in array
+		@if (map-has-key($named-breakpoints, $breakpoint)) {
+			// Set breakpoint value
+			$breakpoint: map-get($named-breakpoints, $breakpoint);
+		} @else {
+			@warn 'Cannot find named breakpoint: ' + $breakpoint;
+		}
+	} @else {
+		// If breakpoint is not in breakpoints array convert px to em
+		$breakpoint: em($breakpoint);
+	}
+
+	// Print media query
+	@media only screen and (#{$approach}: #{$breakpoint}) {
+		@each $property, $value in $properties {
+			// @debug $property, $value;
+			#{$property}: #{$value};
+		}
+	}
+}
+
+
+// USAGE:
+
+// selector {
+// 	'property': 'value'
+
+// 	@include responsivee(' > for min-width, < for max-width ', 'named breakpoint or value in px', (
+// 		'property': 'value',
+// 		'property': 'value'
+// 	));
+// }
+
+
+// BOOTSTRAP MEDIA QUERIES VALUES
+
+// ============  Mobile First Method  =============
+// min-width: 320px   Custom, iPhone Retina
+// min-width: 480px   Extra Small Devices, Phones
+// min-width: 768px   Small Devices, Tablets
+// min-width: 992px   Medium Devices, Desktops
+// min-width: 1200px  Large Devices, Wide Screens
+
+// ============  Desktop First Method  ============
+// max-width: 1200px  Large Devices, Wide Screens
+// max-width: 992px   Medium Devices, Desktops
+// max-width: 768px   Small Devices, Tablets
+// max-width: 480px   Extra Small Devices, Phones
+// max-width: 320px   Custom, iPhone Retina

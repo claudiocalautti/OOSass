@@ -1,3 +1,6 @@
+// UTILITY - MOST USED MIXINS
+
+
 // Font Face - http://stackoverflow.com/questions/15422770/font-face-svg-not-working-properly-in-chrome
 @mixin font-face($name, $path, $filename, $weight: normal, $style: normal) {
 	@font-face {
@@ -38,8 +41,8 @@
 	}
 }
 
-// Disable user-select on markup, excluded text tags
-@mixin disable-user-select {
+// Disable user-select on markup, excluded text tags.
+@mixin manage-user-selection {
 	html,
 	body,
 	div,
@@ -57,6 +60,8 @@
 	li,
 	fieldset,
 	form,
+	input,
+	textarea,
 	table,
 	tbody,
 	tfoot,
@@ -86,21 +91,37 @@
 		-ms-user-select: none;
 		user-select: none;
 	}
+	p,
+	a,
+	strong,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		-webkit-touch-callout: text;
+		-webkit-user-select: text;
+		-khtml-user-select: text;
+		-moz-user-select: -moz-text;
+		-ms-user-select: text;
+		user-select: text;
+	}
 }
 
-// normalize.css v3.0.1
-@mixin normalize {
+// Modified version of normalize.css v3.0.1
+@mixin normalize-html {
+	font-family: sans-serif;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
 
-	html {
-		font-family: sans-serif;
-		-ms-text-size-adjust: 100%;
-		-webkit-text-size-adjust: 100%;
-	}
+@mixin normalize-body {
+	margin: 0;
+	text-rendering: optimizeLegibility;
+}
 
-	body {
-		margin: 0;
-		text-rendering: optimizeLegibility;
-	}
+@mixin normalize-all {
 
 	article,
 	aside,
@@ -188,6 +209,10 @@
 
 	img {
 		border: 0;
+	}
+
+	svg {
+		display: block;
 	}
 
 	svg:not(:root) {
