@@ -26,14 +26,14 @@ The views directory is where page specific styles are constructed and partials c
 ```
 styles/
 |
-|-- fonts/ # custom fonts source files.
+|-- fonts/                # custom fonts source files.
 |   ...
 |
 |-- modules/              # Modules
 |   |-- _variables.scss   # Global Variables
 |   |-- _functions.scss   # Global Functions
-|   |-- _utility.scss     # Common mixins
-|   |-- _responsive.scss  # Settings and mixin for responsive
+|   |-- mixins/           # Most used mixins
+        ...
 |   ...
 |
 |-- partials/             # Partials
