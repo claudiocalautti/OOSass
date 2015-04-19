@@ -1,0 +1,67 @@
+// Disable user-select for every element, except text and input elements.
+@mixin manage-user-select {
+  html,
+  body,
+  div,
+  main,
+  span,
+  object,
+  iframe,
+  img,
+  tt,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  table,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  section,
+  audio,
+  video {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  p,
+  a,
+  strong,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  input,
+  textarea {
+    -webkit-touch-callout: text;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: -moz-text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+}

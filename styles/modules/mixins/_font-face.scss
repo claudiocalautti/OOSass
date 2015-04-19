@@ -1,0 +1,19 @@
+// Font Face - http://stackoverflow.com/questions/15422770/font-face-svg-not-working-properly-in-chrome
+@mixin font-face($name, $path, $filename, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: $name;
+    src: url('#{$path}#{$filename}.eot');
+    src: url('#{$path}#{$filename}.eot?#iefix') format('embedded-opentype'),
+       url('#{$path}#{$filename}.woff') format('woff'),
+       url('#{$path}#{$filename}.ttf') format('truetype'),
+       url('#{$path}#{$filename}.svg##{$name}') format('svg');
+    font-weight: $weight;
+    font-style: $style;
+  }
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+      font-family: $name;
+      src: url('#{$path}#{$filename}.svg##{$name}') format('svg');
+    }
+  }
+}

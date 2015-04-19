@@ -1,0 +1,78 @@
+/**
+ * Sass Project Structure.
+ * See: http://thesassway.com/beginner/how-to-structure-a-sass-project
+ *
+ * The MODULES directory is reserved for Sass code that doesn't cause Sass to
+ * actually output CSS, things like (mixin declarations, functions, variables,
+ * placeholder selectors).
+ *
+ * The PARTIALS directory is where the meat of my CSS is constructed.
+ * Break stylesheets into (header, content, sidebar, and footer components and
+ * a few others), or break into much finer categories (typography, buttons,
+ * textboxes, selectboxes, etc…).
+ *
+ * The VIEWS directory is where page specific styles are constructed and
+ * partials (if needed) are adapted to their container.
+ *
+ * FOLDER STRUCTURE:
+ * styles/
+ * |
+ * |-- modules/              # Modules
+ * |   |-- _variables.scss   # Global Variables
+ * |   |-- _functions.scss   # Global Functions
+ * |   |-- _utility.scss     # Common mixins
+ * |   |-- _responsive.scss  # Settings and mixin for responsive
+ * |   ...
+ * |
+ * |-- partials/             # Partials
+ * |   |-- _typography.scss  # Tipography settings and declarations
+ * |   |-- _elements.scss    # Set of commons elements
+ * |   |-- _layout.scss      # Global parts of the layout
+ * |   ...
+ * |
+ * |-- views/                # Views
+ * |   |-- _home.scss        # page/view specific stylesheet
+ * |   ...
+ * |
+ * `-- style.scss            # primary Sass file
+ *
+ */
+
+
+/*=============
+ * FRAMEWORKS *
+==============*/
+
+@import 'compass';
+
+/*==========
+ * MODULES *
+===========*/
+
+@import 'modules/_variables.scss';
+@import 'modules/_functions.scss';
+@import 'modules/mixins/_font-face.scss';
+@import 'modules/mixins/_manage-user-select.scss';
+@import 'modules/mixins/_media-queries-indicator.scss';
+@import 'modules/mixins/_normalize.scss';
+@import 'modules/mixins/_responsive.scss';
+@import 'modules/mixins/_selection.scss';
+
+// Basic Settings.
+@include normalize-all;
+@include manage-user-select;
+@include selection($white, $black);
+
+/*===========
+ * PARTIALS *
+============*/
+
+@import 'partials/_typography.scss';
+@import 'partials/_elements.scss';
+@import 'partials/_layout.scss';
+
+/*========
+ * VIEWS *
+=========*/
+
+@import 'views/_home.scss';
